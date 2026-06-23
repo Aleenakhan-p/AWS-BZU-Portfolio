@@ -181,7 +181,7 @@ export default function HomePage() {
     },
   ];
   const sorted = useMemo(
-    () => [...participants].sort((a, b) => b.points - a.points),
+    () => [...participants].sort((a, b) => (b?.points || 0) - (a?.points || 0)),
     [participants]
   );
 
@@ -196,7 +196,7 @@ export default function HomePage() {
       .filter(Boolean) as typeof participants;
   }, [participants]);
 
-  const totalPoints = participants.reduce((s, p) => s + p.points, 0);
+  const totalPoints = participants.reduce((s, p) => s + (p?.points || 0), 0);
   const activeTeams = new Set(participants.map((p) => p.team)).size;
 
   const statRows = [
@@ -259,7 +259,7 @@ export default function HomePage() {
       {/* LEFT CONTENT */}
       <div className="max-w-2xl text-left"> 
         <div className="mb-4 flex flex-wrap items-center gap-2"> 
-          <span className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-[9px] font-black uppercase tracking-[0.22em] text-violet-200 sm:text-[10px]"> 
+          <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[9px] font-black uppercase tracking-[0.22em] text-violet-200 sm:text-[10px]"> 
             AWS Student Builder Group • BZU 
           </span> 
           <span className="rounded-full border border-violet-400/20 bg-violet-500/10 px-3 py-1.5 text-[9px] font-black uppercase tracking-[0.22em] text-violet-300 sm:text-[10px]"> 

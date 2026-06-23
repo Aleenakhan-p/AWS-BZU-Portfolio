@@ -1,14 +1,5 @@
-# Dependencies
 node_modules/
-
-# Build output
-dist/
-build/
-
-# Environment variables
+node_modules/*
 .env
-.env.*
-
-
-# Project-specific ignores
+*.log
 *.pdf
